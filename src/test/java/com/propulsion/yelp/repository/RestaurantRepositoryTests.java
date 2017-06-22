@@ -22,6 +22,7 @@ import com.propulsion.yelp.domain.Restaurant;
 @Transactional
 @Sql("/test_data.sql")
 public class RestaurantRepositoryTests {
+	
     @Autowired
     RestaurantRepository repository;
     
