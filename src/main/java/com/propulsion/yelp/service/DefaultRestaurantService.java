@@ -30,4 +30,9 @@ public class DefaultRestaurantService implements RestaurantService {
 		return this.restaurantRepository.findByName(name);
 	}
 
+	@Override
+	public Restaurant findById(Long id) {
+		return this.restaurantRepository.findById(id);
+	}
+
 }

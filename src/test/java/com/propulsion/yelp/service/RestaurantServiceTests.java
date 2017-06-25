@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.propulsion.yelp.domain.Restaurant;
 import com.propulsion.yelp.repository.RestaurantRepository;
 
 @RunWith(SpringRunner.class)
@@ -31,5 +33,11 @@ public class RestaurantServiceTests {
 	@Test
 	public void findByName() {
 		assertThat(service.findByName("Petra").size()).isEqualTo(1);
+	}
+	
+	@Test
+	public void findById() {
+		Restaurant restaurant = service.findById(3L);
+		assertThat(restaurant.getId()).isEqualTo(3);
 	}
 }

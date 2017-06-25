@@ -3,7 +3,8 @@ package com.propulsion.yelp.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class Restaurant {
 	private String phone;
 	private String logo;
 	private String url;
-	@OneToMany
+	@OneToMany(mappedBy="restaurant", cascade = CascadeType.REMOVE)
 	private List<Review> reviews = new ArrayList<>();
 	
 	public Restaurant() {
@@ -52,7 +53,7 @@ public class Restaurant {
 	}
 	
 	public void addReview(Review review) {
-		getReviews().add(review);
+		reviews.add(review);
 	}
 	
 
