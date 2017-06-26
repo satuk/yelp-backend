@@ -37,10 +37,4 @@ public class RestRestaurantController {
         System.out.println( restaurants.size() );
         return restaurants;
     }
-    
-    @JsonView(JsonViews.Summary2.class)
-    @GetMapping("/restaurants2")
-    public List<Restaurant> test() {
-        return restaurantService.findAll();
-    }
 }
