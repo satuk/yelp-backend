@@ -4,12 +4,12 @@ import com.propulsion.yelp.domain.User;
 
 public interface UserService {
 
-	void deleteById(Long id);
+    void deleteById( Long id );
 
-	User save(User user);
-	
-	User findByFirstName(String firstName);
-	
-	void updateUserById(String firstName, String lastName, Long Id);
+    User save( User user );
+
+    User findByFirstName( String firstName );
+
+    void updateUserById( String firstName, String lastName, Long Id );
 
 }
