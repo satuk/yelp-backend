@@ -1,5 +1,7 @@
 package com.propulsion.yelp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,7 @@ public class DefaultUserSevice implements UserService{
 		this.userRepository = userRepository;
 	}
 
+	//METHODS:
 
 	@Override
 	public User save(User user) {
@@ -34,5 +37,15 @@ public class DefaultUserSevice implements UserService{
 	@Override
 	public void updateUserById(String firstName, String lastName, Long Id) {
 		this.userRepository.updateUserById(firstName, lastName, Id);
+	}
+
+	@Override
+	public List<User> findAll() {
+		return this.userRepository.findAll();
+	}
+
+	@Override
+	public User findById(Long id) {
+		return this.userRepository.findById(id);
 	}
 }
