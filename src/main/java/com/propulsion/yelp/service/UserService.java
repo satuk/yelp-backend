@@ -15,5 +15,9 @@ public interface UserService {
 	List<User> findAll();
 	
 	void updateUserById(String firstName, String lastName, Long Id);
+	
+	User anonymousUserById(Long id);
+	
+	User findByEmail(String email);
 
 }

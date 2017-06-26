@@ -35,6 +35,12 @@ public class UserRepositoryTests {
 		assertThat(repository.count()).isEqualTo(2);
 	}
 	
+	@Test
+	public void findByEmail() {
+		User user =repository.findByEmail("example@email.com");
+		assertThat(user.getId()).isEqualTo(1L);
+	}
+	
 	
 	@Test
 	public void findById() {

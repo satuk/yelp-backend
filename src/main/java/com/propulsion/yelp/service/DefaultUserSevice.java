@@ -48,4 +48,17 @@ public class DefaultUserSevice implements UserService{
 	public User findById(Long id) {
 		return this.userRepository.findById(id);
 	}
+
+	@Override
+	public User anonymousUserById(Long id) {
+		User user = this.userRepository.findById(id);
+		user.setFirstName("Anonymous");
+		user.setLastName("Anonymous");
+		return this.userRepository.save(user);
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		return this.userRepository.findByEmail(email);
+	}
 }

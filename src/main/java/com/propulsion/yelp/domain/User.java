@@ -2,11 +2,13 @@ package com.propulsion.yelp.domain;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +23,7 @@ public class User {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	@Column(unique=true)
 	private String email;
 	private String password;
 	
