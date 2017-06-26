@@ -14,4 +14,5 @@ public interface ReviewService {
 	
 	List<Review> findAll();
 
+	Review findById(Long id);
 }

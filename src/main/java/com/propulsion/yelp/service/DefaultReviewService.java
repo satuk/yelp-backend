@@ -42,4 +42,9 @@ public class DefaultReviewService implements ReviewService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Review findById(Long id) {
+		return repository.findById(id);
+	}
+
 }

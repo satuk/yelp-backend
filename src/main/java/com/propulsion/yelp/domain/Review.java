@@ -53,5 +53,13 @@ public class Review implements Serializable{
 	public Review(String text, Integer rating, LocalDateTime dateCreated, User user) {
 		this(null,text,rating,dateCreated,user);
 	}
+
+	public Review(String text, Integer rating, LocalDateTime dateCreated, User user, Restaurant restaurant) {
+		this.text = text;
+		this.rating = rating;
+		this.dateCreated = dateCreated;
+		this.user = user;
+		this.restaurant = restaurant;
+	}
 	
 }

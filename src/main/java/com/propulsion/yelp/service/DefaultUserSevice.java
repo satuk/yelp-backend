@@ -20,11 +20,6 @@ public class DefaultUserSevice implements UserService{
 		this.userRepository = userRepository;
 	}
 
-	//METHODS:
-	@Override
-	public void deleteById(Long id) {
-		this.userRepository.deleteById(id);
-	}
 
 	@Override
 	public User save(User user) {

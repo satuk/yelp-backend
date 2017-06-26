@@ -4,8 +4,6 @@ import com.propulsion.yelp.domain.User;
 
 public interface UserService {
 
-	void deleteById(Long id);
-
 	User save(User user);
 	
 	User findByFirstName(String firstName);
