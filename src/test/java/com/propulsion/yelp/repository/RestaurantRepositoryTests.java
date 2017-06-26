@@ -46,5 +46,12 @@ public class RestaurantRepositoryTests {
         assertThat(repository.findAll().size()).isEqualTo(1);
         assertThat(repository.findAll().get(0).getId()).isEqualTo(3);
     }
+
     
+    @Test
+    public void findById() {
+    	Restaurant restaurant = repository.findById(3L);
+        assertThat(restaurant.getId()).isEqualTo(3);
+    }
+ 
 }
