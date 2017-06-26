@@ -1,5 +1,7 @@
 package com.propulsion.yelp.service;
 
+import java.util.List;
+
 import com.propulsion.yelp.domain.Review;
 
 public interface ReviewService {
@@ -9,5 +11,7 @@ public interface ReviewService {
 	Review saveReview(Review review);
 	
 	void updateReview(String text, Integer rating, Long id);
+	
+	List<Review> findAll();
 
 }
