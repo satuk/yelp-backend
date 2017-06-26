@@ -47,6 +47,20 @@ public class UserServiceTests {
 	}
 	
 	@Test
+	public void anonymous() {
+		userService.anonymousUserById(1L);
+		assertThat(userService.findById(1L).getFirstName()).isEqualTo("Anonymous");
+		
+	}
+	
+	@Test
+	public void findByEmail() {
+		User user = userService.findByEmail("example@email.com");
+		assertThat(user.getId()).isEqualTo(1L);
+		
+	}
+	
+	@Test
 	public void testUpdateUserById() {
 		//TEST BY ADDING NEW USER:
 		User user2 = new User ("Nancy", "Anggraini", "example2@email.com", "password");
