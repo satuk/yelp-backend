@@ -11,7 +11,6 @@ import com.propulsion.yelp.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	
-
 	void deleteById(Long id);
 
 	User save(User user);
