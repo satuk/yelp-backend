@@ -35,13 +35,6 @@ public class UserRepositoryTests {
 		assertThat(repository.count()).isEqualTo(2);
 	}
 	
-	@Test
-	public void deleteById() {
-		repository.save(user);
-		assertThat(repository.count()).isEqualTo(2);
-		repository.deleteById(user.getId());
-		assertThat(repository.count()).isEqualTo(1);
-	}
 	
 	@Test
 	public void findById() {
