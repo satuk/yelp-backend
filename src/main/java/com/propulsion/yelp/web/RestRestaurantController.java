@@ -5,19 +5,19 @@ import com.propulsion.yelp.domain.JsonViews;
 import com.propulsion.yelp.domain.Restaurant;
 import com.propulsion.yelp.service.DefaultRestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * Created by satuk on 26.06.17.
  */
 
 @RestController
-@RequestMapping("/api/restaurants/")
+@RequestMapping("/api/restaurants")
 public class RestRestaurantController {
     
     private final DefaultRestaurantService restaurantService;
@@ -34,8 +34,16 @@ public class RestRestaurantController {
         return restaurantService.findAll();
     }
     
+    @JsonView(JsonViews.Detail.class)
     @GetMapping("/{id}")
-    public Restaurant retrieveRestaurants(@PathVariable Long id){
+    public Restaurant retrieveRestaurants( @PathVariable Long id ) {
         return restaurantService.findById( id );
+    }
+
+    @JsonView(JsonViews.Summary.class)
+    @RequestMapping(value = "/search", params = "query", method = GET)
+    @ResponseBody
+    public List<Restaurant> retrieveSearchedRestaurants( @RequestParam("query") String query ) {
+        return restaurantService.findByNameIgnoreCaseContaining( query );
     }
 }
