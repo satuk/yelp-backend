@@ -11,6 +11,8 @@ public interface RestaurantService {
     
     List<Restaurant> findByName( String name );
     
+    List<Restaurant> findByNameIgnoreCaseContaining( String name );
+    
     Restaurant findById( Long id );
     
 }
