@@ -17,7 +17,7 @@ import com.propulsion.yelp.domain.User;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @Transactional
-@Sql("/test_data.sql")
+@Sql("/test-data.sql")
 public class UserRepositoryTests {
     
     @Autowired
