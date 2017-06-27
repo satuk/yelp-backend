@@ -11,27 +11,27 @@ import java.util.List;
 @Transactional(readOnly = true)
 @Service
 public class DefaultRestaurantService implements RestaurantService {
-
+    
     private final RestaurantRepository restaurantRepository;
-
+    
     @Autowired
     public DefaultRestaurantService( RestaurantRepository restaurantRepository ) {
         this.restaurantRepository = restaurantRepository;
     }
-
+    
     @Override
     public List<Restaurant> findAll() {
         return this.restaurantRepository.findAll();
     }
-
+    
     @Override
     public List<Restaurant> findByName( String name ) {
         return this.restaurantRepository.findByName( name );
     }
-
+    
     @Override
     public Restaurant findById( Long id ) {
         return this.restaurantRepository.findById( id );
     }
-
+    
 }

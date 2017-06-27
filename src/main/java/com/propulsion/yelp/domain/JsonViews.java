@@ -1,4 +1,5 @@
 package com.propulsion.yelp.domain;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 /**
@@ -7,8 +8,9 @@ import com.fasterxml.jackson.annotation.JsonView;
  */
 public interface JsonViews {
     
-    interface Summary {}
-    
+    interface Summary {
+    }
+
 //    interface newRestaurant extends Public {
 //
 //    }

@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ControllerAdvice
 public class GlobalControllerAdvice {
-
-	@InitBinder
-	public void configureBinding(WebDataBinder binder) {
-		binder.setDisallowedFields("id");
-	}
-
-	@ResponseStatus(HttpStatus.CONFLICT)
-	@ExceptionHandler(DataIntegrityViolationException.class)
-	public void handleDatabaseConstraintViolation() {
-		/* no-op */
-	}
-
+    
+    @InitBinder
+    public void configureBinding( WebDataBinder binder ) {
+        binder.setDisallowedFields( "id" );
+    }
+    
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public void handleDatabaseConstraintViolation() {
+        /* no-op */
+    }
+    
 }

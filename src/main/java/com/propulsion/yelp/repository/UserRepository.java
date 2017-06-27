@@ -8,17 +8,17 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
+    
     void deleteById( Long id );
-
+    
     User save( User user );
-
+    
     User findById( Long id );
-
+    
     User findByFirstName( String firstName );
-
+    
     @Modifying
     @Query("update User u set u.firstName = ?1, u.lastName = ?2 where u.id = ?3")
     void updateUserById( String firstName, String lastName, Long Id );
-
+    
 }

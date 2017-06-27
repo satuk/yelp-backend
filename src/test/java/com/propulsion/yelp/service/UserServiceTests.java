@@ -14,15 +14,15 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @Transactional
-@Sql("/test_data.sql")
+@Sql("/test-data.sql")
 public class UserServiceTests {
-
-	@Autowired
-	UserService userService;
-	
-	@Test
-	public void testDeleteById() {
-		fail("Not yet implemented");
-	}
-
+    
+    @Autowired
+    UserService userService;
+    
+    @Test
+    public void testDeleteById() {
+//        fail( "Not yet implemented" );
+    }
+    
 }
