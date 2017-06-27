@@ -21,12 +21,14 @@ import lombok.EqualsAndHashCode;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(JsonViews.Summary.class)
     private Long id;
-    @JsonView(JsonViews.Detail.class)
+    @JsonView({ JsonViews.Summary.class, JsonViews.Detail.class })
     private String firstName;
-    @JsonView(JsonViews.Detail.class)
+    @JsonView({ JsonViews.Summary.class, JsonViews.Detail.class })
     private String lastName;
     @Column(unique = true)
+    @JsonView({ JsonViews.Summary.class, JsonViews.Detail.class })
     private String email;
     private String password;
     
