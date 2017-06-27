@@ -1,5 +1,19 @@
 package com.propulsion.yelp.domain;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -35,13 +49,21 @@ public class Review implements Serializable {
         this.user = user;
     }
     
+    @PrePersist
+    protected void prePersist() {
+        this.dateCreated = LocalDateTime.now();
+    }
+    
     public Review( String text, Integer rating, LocalDateTime dateCreated, User user ) {
         this( null, text, rating, dateCreated, user );
     }
     
-    @PrePersist
-    protected void prePersist() {
-        this.dateCreated = LocalDateTime.now();
+    public Review( String text, Integer rating, LocalDateTime dateCreated, User user, Restaurant restaurant ) {
+        this.text = text;
+        this.rating = rating;
+        this.dateCreated = dateCreated;
+        this.user = user;
+        this.restaurant = restaurant;
     }
     
 }
