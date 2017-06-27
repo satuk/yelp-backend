@@ -19,7 +19,7 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(JsonViews.Summary.class)
     private Long id;
-    @JsonView({JsonViews.Summary.class, JsonViews.Summary2.class})
+    @JsonView(JsonViews.Summary.class)
     private String name;
     @JsonView(JsonViews.Summary.class)
     private String address;
@@ -27,7 +27,7 @@ public class Restaurant {
     private String email;
     private String phone;
     private String logo;
-    @JsonView({JsonViews.Summary.class, JsonViews.Summary2.class})
+    @JsonView(JsonViews.Summary.class)
     private String url;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE)
     private List<Review> reviews = new ArrayList<>();
