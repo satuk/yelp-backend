@@ -10,7 +10,10 @@ public interface JsonViews {
     
     interface Summary {
     }
-
+    
+    interface Detail {
+    
+    }
 //    interface newRestaurant extends Public {
 //
 //    }
