@@ -23,18 +23,18 @@ import com.propulsion.yelp.repository.UserRepository;
 @Transactional
 public class RestUserControllerTests {
 
-	@Autowired
-	MockMvc mockMvc;
-	
-	@Autowired
-	UserRepository repository;
-	
-	@Test
-	public void updateUser() throws Exception {
-		
-		String json = "{\"firstName\":\"Petra\",\"lastName\":\"Edited\",\"userId\":1}";
-		
-		mockMvc.perform(put("/api/user/{id}",1).contentType(APPLICATION_JSON).content(json)).andExpect(status().isNoContent());
-	}
+    @Autowired
+    MockMvc mockMvc;
+
+    @Autowired
+    UserRepository repository;
+
+    @Test
+    public void updateUser() throws Exception {
+
+        String json = "{\"firstName\":\"Petra\",\"lastName\":\"Edited\",\"userId\":1}";
+
+        mockMvc.perform( put( "/api/user/{id}", 1 ).contentType( APPLICATION_JSON ).content( json ) ).andExpect( status().isNoContent() );
+    }
 
 }

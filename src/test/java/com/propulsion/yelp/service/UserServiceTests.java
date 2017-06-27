@@ -19,58 +19,58 @@ import com.propulsion.yelp.domain.User;
 @Transactional
 @Sql("/test_data.sql")
 public class UserServiceTests {
+    
+    @Autowired
+    UserService userService;
+    
+    @Test
+    public void testSave() {
+        User user2 = new User( "Nancy", "Anggraini", "example2@email.com", "password" );
+        assertThat( userService.findAll() ).hasSize( 1 );
+        
+        userService.save( user2 );
+        assertThat( userService.findAll() ).hasSize( 2 );
+    }
+    
+    @Test
+    public void testFindByFirstName() {
+        User user2 = new User( "Nancy", "Anggraini", "example2@email.com", "password" );
+        userService.save( user2 );
+        assertThat( userService.findByFirstName( "Nancy" ) ).isEqualTo( user2 );
+        
+        assertThat( userService.findByFirstName( "Petra" ).getLastName() ).isEqualTo( "Pistalu" );
+    }
+    
+    @Test
+    public void testFindById() {
+        assertThat( userService.findById( 1L ).getFirstName() ).isEqualTo( "Petra" );
+    }
+    
+    @Test
+    public void anonymous() {
+        userService.anonymousUserById( 1L );
+        assertThat( userService.findById( 1L ).getFirstName() ).isEqualTo( "Anonymous" );
+        
+    }
+    
+    @Test
+    public void findByEmail() {
+        User user = userService.findByEmail( "example@email.com" );
+        assertThat( user.getId() ).isEqualTo( 1L );
+        
+    }
+    
+    @Test
+    public void testUpdateUserById() {
+        //TEST BY ADDING NEW USER:
+        User user2 = new User( "Nancy", "Anggraini", "example2@email.com", "password" );
+        userService.save( user2 );
+        //getting the id:
+        userService.updateUserById( "Beyonce", "Anggraini", userService.findByFirstName( "Nancy" ).getId() );
+        assertThat( userService.findByFirstName( "Beyonce" ).getLastName() ).isEqualTo( "Anggraini" );
 
-	@Autowired
-	UserService userService;
-	
-	@Test
-	public void testSave() {
-		User user2 = new User ("Nancy", "Anggraini", "example2@email.com", "password");
-		assertThat(userService.findAll()).hasSize(1);
-		
-		userService.save(user2);
-		assertThat(userService.findAll()).hasSize(2);
-	}
-	
-	@Test
-	public void testFindByFirstName() {
-		User user2 = new User ("Nancy", "Anggraini", "example2@email.com", "password");
-		userService.save(user2);
-		assertThat(userService.findByFirstName("Nancy")).isEqualTo(user2);
-		
-		assertThat(userService.findByFirstName("Petra").getLastName()).isEqualTo("Pistalu");
-	}
-	
-	@Test
-	public void testFindById() {
-		assertThat(userService.findById(1L).getFirstName()).isEqualTo("Petra");
-	}
-	
-	@Test
-	public void anonymous() {
-		userService.anonymousUserById(1L);
-		assertThat(userService.findById(1L).getFirstName()).isEqualTo("Anonymous");
-		
-	}
-	
-	@Test
-	public void findByEmail() {
-		User user = userService.findByEmail("example@email.com");
-		assertThat(user.getId()).isEqualTo(1L);
-		
-	}
-	
-	@Test
-	public void testUpdateUserById() {
-		//TEST BY ADDING NEW USER:
-		User user2 = new User ("Nancy", "Anggraini", "example2@email.com", "password");
-		userService.save(user2);
-		//getting the id:
-		userService.updateUserById("Beyonce", "Anggraini", userService.findByFirstName("Nancy").getId());
-		assertThat(userService.findByFirstName("Beyonce").getLastName()).isEqualTo("Anggraini");
-		
 //		//TEST BY USING test_data.sql:
-		userService.updateUserById("Petra", "Albu", 1L);
-		assertThat(userService.findById(1L).getLastName()).isEqualTo("Albu");
-	}
+        userService.updateUserById( "Petra", "Albu", 1L );
+        assertThat( userService.findById( 1L ).getLastName() ).isEqualTo( "Albu" );
+    }
 }

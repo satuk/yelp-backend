@@ -18,12 +18,8 @@ INSERT INTO restaurants(id, address, email, logo, name, phone, url) VALUES (4,'B
 'info@zeughauskeller.ch','https://poster-auctioneer.com/images/products/200/poster_200401_z.jpg',
 'Zeughauskeller','044 222 22 18','http://www.zeughauskeller.ch');
 
-INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 3,
-'great', 1, 1);
-INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 5,
-'!!!great!!!', 2, 2);
-INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3,
-'great job', 4, 4);
-INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 1,
-'baaaad!!!', 3, 3);
+INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 3, 'great', 1, 1);
+INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 5, '!!!great!!!', 2, 2);
+INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3, 'great job', 4, 4);
+INSERT INTO reviews(id, date_created, rating, text,restaurant_id, user_id) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 1, 'baaaad!!!', 3, 3);
 
