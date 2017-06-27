@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class RestRestaurantController {
     
     private final DefaultRestaurantService restaurantService;
@@ -30,11 +31,6 @@ public class RestRestaurantController {
     @JsonView(JsonViews.Summary.class)
     @GetMapping("/restaurants")
     public List<Restaurant> retrieveAllRestaurants() {
-        
-        List<Restaurant> restaurants = restaurantService.findAll();
-        
-        System.out.println( restaurants );
-        System.out.println( restaurants.size() );
-        return restaurants;
+        return restaurantService.findAll();
     }
 }
