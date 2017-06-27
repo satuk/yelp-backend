@@ -6,6 +6,7 @@ import com.propulsion.yelp.domain.Restaurant;
 import com.propulsion.yelp.service.DefaultRestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api")
-//@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api/restaurants/")
 public class RestRestaurantController {
     
     private final DefaultRestaurantService restaurantService;
@@ -29,8 +29,13 @@ public class RestRestaurantController {
     }
     
     @JsonView(JsonViews.Summary.class)
-    @GetMapping("/restaurants")
+    @GetMapping
     public List<Restaurant> retrieveAllRestaurants() {
         return restaurantService.findAll();
+    }
+    
+    @GetMapping("/{id}")
+    public Restaurant retrieveRestaurants(@PathVariable Long id){
+        return restaurantService.findById( id );
     }
 }
