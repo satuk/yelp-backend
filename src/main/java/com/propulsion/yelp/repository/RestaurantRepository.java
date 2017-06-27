@@ -11,7 +11,8 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     
     List<Restaurant> findByName( String name );
     
-    Restaurant findById( Long id );
+    List<Restaurant> findByNameIgnoreCaseContaining( String name );
     
+    Restaurant findById( Long id );
     
 }
