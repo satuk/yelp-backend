@@ -1,7 +1,6 @@
 package com.propulsion.yelp.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,50 +12,51 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.propulsion.yelp.domain.User;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @Transactional
-@Sql("/test_data.sql")
+@Sql("/test-data.sql")
 public class UserRepositoryTests {
-	
-	@Autowired
-	UserRepository repository;
-	
-	User user = new User("asda", "asssda", "asdsasa", "asdas");
-
-	@Test
-	public void before() {
-		assertThat(repository.count()).isEqualTo(1);
-	}
-	
-	@Test
-	public void saveUser() {
-		repository.save(user);
-		assertThat(repository.count()).isEqualTo(2);
-	}
-	
-	@Test
-	public void deleteById() {
-		repository.save(user);
-		assertThat(repository.count()).isEqualTo(2);
-		repository.deleteById(user.getId());
-		assertThat(repository.count()).isEqualTo(1);
-	}
-	
-	@Test
-	public void findById() {
-		assertThat(repository.findById(1L).getFirstName()).isEqualTo("Petra");
-	}
-	
-	@Test
-	public void findByFirstName() {
-		assertThat(repository.findByFirstName("Petra").getId()).isEqualTo(1);
-	}
-	
-	@Test
-	public void updateUser() {
-		repository.updateUserById("Petra","Albu",1L);
-		assertThat(repository.findById(1L).getLastName()).isEqualTo("Albu");
-	}
-
+    
+    @Autowired
+    UserRepository repository;
+    
+    User user = new User( "asda", "asssda", "asdsasa", "asdas" );
+    
+    @Test
+    public void before() {
+        assertThat( repository.count() ).isEqualTo( 1 );
+    }
+    
+    @Test
+    public void saveUser() {
+        repository.save( user );
+        assertThat( repository.count() ).isEqualTo( 2 );
+    }
+    
+    @Test
+    public void deleteById() {
+        repository.save( user );
+        assertThat( repository.count() ).isEqualTo( 2 );
+        repository.deleteById( user.getId() );
+        assertThat( repository.count() ).isEqualTo( 1 );
+    }
+    
+    @Test
+    public void findById() {
+        assertThat( repository.findById( 1L ).getFirstName() ).isEqualTo( "Petra" );
+    }
+    
+    @Test
+    public void findByFirstName() {
+        assertThat( repository.findByFirstName( "Petra" ).getId() ).isEqualTo( 1 );
+    }
+    
+    @Test
+    public void updateUser() {
+        repository.updateUserById( "Petra", "Albu", 1L );
+        assertThat( repository.findById( 1L ).getLastName() ).isEqualTo( "Albu" );
+    }
+    
 }
