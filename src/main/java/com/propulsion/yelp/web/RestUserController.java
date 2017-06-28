@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
@@ -37,7 +38,8 @@ public class RestUserController {
     //update User anonymous
     @PutMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void updateuser( @RequestBody String firstName, String lastName, Long userId, @PathVariable Long id ) {
-        userService.updateUserById( firstName, lastName, userId );
+    public void updateuser( @RequestBody Map<String, String> json, @PathVariable Long id ) {
+        System.out.println(json);
+        this.userService.updateUserById( json.get( "first_name" ), json.get( "last_name" ), id );
     }
 }
