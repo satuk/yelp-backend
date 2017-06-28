@@ -17,20 +17,27 @@ public class Restaurant {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView({JsonViews.Summary.class, JsonViews.Detail.class})
+    @JsonView(JsonViews.Summary.class)
     private Long id;
-    @JsonView({JsonViews.Summary.class, JsonViews.Detail.class})
+    
+    @JsonView(JsonViews.Summary.class)
     private String name;
-    @JsonView({JsonViews.Summary.class, JsonViews.Detail.class})
+    
+    @JsonView(JsonViews.Summary.class)
     private String address;
-    @JsonView({JsonViews.Summary.class, JsonViews.Detail.class})
+    
+    @JsonView(JsonViews.Summary.class)
     private String email;
-    @JsonView({JsonViews.Summary.class, JsonViews.Detail.class})
+    
+    @JsonView(JsonViews.Summary.class)
     private String phone;
+    
     @JsonView(JsonViews.Detail.class)
     private String logo;
-    @JsonView({JsonViews.Summary.class, JsonViews.Detail.class})
+    
+    @JsonView(JsonViews.Summary.class)
     private String url;
+    
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE)
     @JsonView(JsonViews.Detail.class)
     private List<Review> reviews = new ArrayList<>();

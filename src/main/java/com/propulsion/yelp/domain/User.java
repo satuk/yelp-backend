@@ -1,38 +1,40 @@
 package com.propulsion.yelp.domain;
 
-import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 @Data
 @EqualsAndHashCode(exclude = "id")
+@ToString(exclude = "password")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(JsonViews.Summary.class)
     private Long id;
-    @JsonView({ JsonViews.Summary.class, JsonViews.Detail.class })
+    
+    @JsonView(JsonViews.Summary.class)
+    @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
-    @JsonView({ JsonViews.Summary.class, JsonViews.Detail.class })
+    
+    @Column(name = "last_name", nullable = false, length = 50)
+    @JsonView(JsonViews.Summary.class)
     private String lastName;
+    
     @Column(unique = true)
-    @JsonView({ JsonViews.Summary.class, JsonViews.Detail.class })
+    @JsonView(JsonViews.Summary.class)
     private String email;
+    
     private String password;
     
+    
     public User() {
+        /* default constructor: required by JPA */
     }
     
     public User( Long id, String firstName, String lastName, String email, String password ) {
@@ -46,6 +48,5 @@ public class User {
     public User( String firstName, String lastName, String email, String password ) {
         this( null, firstName, lastName, email, password );
     }
-    
     
 }
