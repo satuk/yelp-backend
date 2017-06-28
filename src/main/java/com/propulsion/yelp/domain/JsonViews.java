@@ -14,7 +14,4 @@ public interface JsonViews {
     interface Detail extends Summary {
     
     }
-//    interface newRestaurant extends Public {
-//
-//    }
 }
