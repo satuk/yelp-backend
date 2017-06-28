@@ -7,7 +7,6 @@ import com.propulsion.yelp.service.DefaultRestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -36,14 +35,20 @@ public class RestRestaurantController {
     
     @JsonView(JsonViews.Detail.class)
     @GetMapping("/{id}")
-    public Restaurant retrieveRestaurants( @PathVariable Long id ) {
+    public Restaurant retrieveRestaurant( @PathVariable Long id ) {
         return restaurantService.findById( id );
     }
-
+    
     @JsonView(JsonViews.Summary.class)
     @RequestMapping(value = "/search", params = "query", method = GET)
     @ResponseBody
     public List<Restaurant> retrieveSearchedRestaurants( @RequestParam("query") String query ) {
         return restaurantService.findByNameIgnoreCaseContaining( query );
     }
+    
+    
+    // login
+//    PUT:  /api/restaurant/:id/review/:id
+//    DELETE:  /api/restaurant/:id/review/:id
+//    POST:  /api/restaurant/:id/review
 }
