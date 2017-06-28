@@ -1,13 +1,12 @@
 package com.propulsion.yelp.service;
 
-import java.util.List;
-
+import com.propulsion.yelp.domain.User;
+import com.propulsion.yelp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.propulsion.yelp.domain.User;
-import com.propulsion.yelp.repository.UserRepository;
+import java.util.List;
 
 @Transactional
 @Service
@@ -46,6 +45,11 @@ public class DefaultUserSevice implements UserService {
     
     @Override
     public User findById( Long id ) {
+        User user = this.userRepository.findById( id );
+        
+        if ( user == null ) {
+            throw new UserNotFoundException( "Could not find User with ID [" + id + "]" );
+        }
         return this.userRepository.findById( id );
     }
     
