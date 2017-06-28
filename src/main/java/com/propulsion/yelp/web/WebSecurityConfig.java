@@ -44,6 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .mvcMatchers( GET, "/api/users/**" ).permitAll()
                 .and()
+        
+                .mvcMatcher( "/api/users/sign_up" )
+                .authorizeRequests()
+                .mvcMatchers( POST, "/api/users/sign_up/**" ).permitAll()
+                .and()
                 
                 .mvcMatcher( "/api/reviews" )
                 .authorizeRequests()
