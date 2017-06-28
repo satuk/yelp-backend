@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 /**
  * Created by satuk on 27.06.17.
@@ -28,22 +29,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure( HttpSecurity http ) throws Exception {
         http
-                .mvcMatcher( "/api/**" )
-                .authorizeRequests()
-                .mvcMatchers( GET, "/api/restaurants/**" ).permitAll()
-                .and()
+                .mvcMatcher( "/api/restaurants" )
+                    .authorizeRequests()
+                        .mvcMatchers( GET, "/api/restaurants/**" ).permitAll()
+                        .mvcMatchers( POST, "/api/restaurants" ).permitAll()
+                        .and()
+                
+                .mvcMatcher( "/api/users" )
+                    .authorizeRequests()
+                        .mvcMatchers( GET, "/api/users/**" ).permitAll()
+                        .and()
+        
+                .mvcMatcher( "/api/reviews" )
+                    .authorizeRequests()
+                        .mvcMatchers( GET, "/api/reviews/**" ).permitAll()
+                        .and()
                 
                 .mvcMatcher( "/**" )
-                .authorizeRequests()
-                .mvcMatchers( "/**" ).denyAll()
-                .and()
+                    .authorizeRequests()
+                        .mvcMatchers( "/**" ).denyAll()
+                        .and()
                 
                 .sessionManagement()
-                .sessionCreationPolicy( SessionCreationPolicy.STATELESS )
-                .and()
+                    .sessionCreationPolicy( SessionCreationPolicy.STATELESS )
+                    .and()
                 
                 .csrf()
-                .disable()
+                    .disable()
                 
                 .httpBasic();
     }

@@ -1,8 +1,8 @@
 package com.propulsion.yelp.service;
 
-import java.util.List;
-
 import com.propulsion.yelp.domain.Review;
+
+import java.util.List;
 
 public interface ReviewService {
     

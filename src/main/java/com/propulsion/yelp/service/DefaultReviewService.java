@@ -1,13 +1,12 @@
 package com.propulsion.yelp.service;
 
-import java.util.List;
-
+import com.propulsion.yelp.domain.Review;
+import com.propulsion.yelp.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.propulsion.yelp.domain.Review;
-import com.propulsion.yelp.repository.ReviewRepository;
+import java.util.List;
 
 @Service
 @Transactional
@@ -23,7 +22,6 @@ public class DefaultReviewService implements ReviewService {
     @Override
     public void deleteReview( Long id ) {
         this.repository.deleteById( id );
-        
     }
     
     @Override

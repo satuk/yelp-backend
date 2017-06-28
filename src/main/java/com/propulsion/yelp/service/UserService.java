@@ -1,8 +1,8 @@
 package com.propulsion.yelp.service;
 
-import java.util.List;
-
 import com.propulsion.yelp.domain.User;
+
+import java.util.List;
 
 public interface UserService {
     
