@@ -3,6 +3,7 @@ buildscript {
         springBootVersion = '1.5.4.RELEASE'
         hibernateVersion = '5.2.8.Final'
         jwtVersion = '0.7.0'
+        jacksonDateTimeVersion = '2.8.7'
     }
     repositories {
         mavenCentral()
@@ -20,6 +21,8 @@ apply plugin: 'org.springframework.boot'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+ext['hibernate.version'] = hibernateVersion
+
 repositories {
     mavenCentral()
 }
@@ -32,6 +35,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonDateTimeVersion}")
+
     compile('com.h2database:h2')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
