@@ -48,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatcher( "/api/users/sign_up" )
                 .authorizeRequests()
                 .mvcMatchers( POST, "/api/users/sign_up/**" ).permitAll()
+                .antMatchers( OPTIONS, "/api/users/sign_up/**" ).permitAll()
                 .and()
                 
                 .mvcMatcher( "/api/reviews" )
