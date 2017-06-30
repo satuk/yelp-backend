@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 /**
  * Created by satuk on 27.06.17.
